@@ -7,10 +7,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const {auth} = require('./middlewares/auth');
 const usersRoutes = require('./routes/users');
-const { login, createUser, getUserInfo } = require('./controllers/users');
+const { login, createUser } = require('./controllers/users');
 const CentralizedErrorHandler = require('./middlewares/centralized-error-handler');
 
-const { PORT = 4000 } = process.env;
+const PORT = 4000;
 
 const app = express();
 
@@ -20,11 +20,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // подключаемся к серверу mongo
-mongoose.connect('mongodb://localhost:27017/MetaBackend', {
+mongoose.connect('mongodb://mongo:27017/Meta', {
+  useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
-  useUnifiedTopology: true,
 });
 
 const corsOptions = {
