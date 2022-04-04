@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Регистрация</title>
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <h1 class="header__title">Meta</h1>
+    <nav class="header__navigation">
+      <a class="header__link" href="index.html">Главная</a>
+      <a class="header__link" href="registration.html">Регистрация</a>
+      <a class="header__link" href="login.html">Логин</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <form class="form form__registration" id="registerForm" method="post">
+      <input class="form__input form__registration_name" id="registerName" name="register-name" placeholder="Имя" type="text" required value="test">
+      <input class="form__input form__registration_email" id="registerEmail" name="register-email" placeholder="Электронная почта" type="email" required value="test@mail.ru">
+      <input class="form__input form__registration_password" id="registerPassword" name="register-password" placeholder="Пароль" type="password" required value="123456789">
+      <button class="form__submit" id="registerFormSubmit" type="submit">Зарегистрироваться</button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

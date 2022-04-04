@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Meta</title>
+  <title>Логин</title>
 </head>
 
 <body class="page">
@@ -18,6 +18,14 @@
       <a class="header__link" href="login.html">Логин</a>
     </nav>
   </header>
+
+  <main class="content">
+    <form class="form form__login" id="loginForm" name="login-form">
+      <input class="form__input form__login_email" id="loginEmail" name="login-email" placeholder="Электронная почта" type="email" value="test@mail.ru">
+      <input class="form__input form__login_password" id="loginPassword" name="login-password" placeholder="Пароль" type="password" value="123456789">
+      <button class="form__submit" id="loginSubmit" type="submit">Войти</button>
+    </form>
+  </main>
 
   <script src="script.js"></script>
 </body>

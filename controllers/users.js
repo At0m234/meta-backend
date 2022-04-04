@@ -10,7 +10,7 @@ const createUser = (req, res, next) => {
   const SALTROUNDS = 10;
   const {name, email, password} = req.body;
 
-  return bcrypt.hash(email, SALTROUNDS)
+  return bcrypt.hash(password, SALTROUNDS)
     .then((hash) => {
       if (!hash) {
         throw new BadRequestError('Ошибка хэширования!', 400);
@@ -21,7 +21,7 @@ const createUser = (req, res, next) => {
         if (!data) {
           throw new BadRequestError('Произошла ошибка, не удалось создать пользователя', 400);
         }
-        res.status(200).send(data);
+        res.status(200).send('Поздравляем! Вы успешно зарегистрировались!');
       })
       // данные не записались, вернём ошибку
       .catch(next);
@@ -47,7 +47,7 @@ const login = (req, res, next) => {
         { expiresIn: '24h' },
       );
       // вернём токен
-      res.send(token);
+      res.status(200).send(token);
     })
     // возвращаем ошибку аутентификации
     .catch(next);

@@ -5,14 +5,17 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
-const {auth} = require('./middlewares/auth');
-const usersRoutes = require('./routes/users');
+// const {auth} = require('./middlewares/auth');
+// const usersRoutes = require('./routes/users');
 const { login, createUser } = require('./controllers/users');
 const CentralizedErrorHandler = require('./middlewares/centralized-error-handler');
+const helmet = require('helmet');
 
 const PORT = 4000;
 
 const app = express();
+
+app.use(helmet());
 
 // bodyParser для сбора JSON-формата
 app.use(bodyParser.json());
@@ -20,7 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // подключаемся к серверу mongo
-mongoose.connect('mongodb://mongo:27017/Meta', {
+mongoose.connect('mongodb://localhost:27017/Meta', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useCreateIndex: true,
@@ -45,7 +48,7 @@ app.post('/signup', createUser);
 app.post('/signin', login);
 
 // подключаем роуты, требующие авторизации
-app.use('/', auth, usersRoutes);
+// app.use('/', auth, usersRoutes);
 
 // здесь обрабатываем все ошибки
 app.use(CentralizedErrorHandler);

@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
     maxlength: 30,
     required: true,
     new: true,
+    select: false,
   },
   email: {
     type: String,
@@ -28,7 +29,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 8,
-    select: true,
+    select: false,
   },
   updated: {
     type: Date,
